@@ -2,12 +2,13 @@
   <div class="menu-index">
     <el-menu background-color="#222f3e" text-color="#fff" active-text-color="#54a0ff">
       <div style="color: #fff; margin: 20px 0;">
-        用户名称
+        疫情防控管理
       </div>
-      <el-submenu index="1">
-        <template slot="title">
+      <el-menu-item index="1">首页</el-menu-item>
+      <el-submenu >
+        <!-- <template slot="title"> -->
           <span slot="title">系统管理</span>
-        </template>
+        <!-- </template> -->
         <el-menu-item index="1-1">用户信息</el-menu-item>
         <el-menu-item index="1-2">角色信息</el-menu-item>
       </el-submenu>

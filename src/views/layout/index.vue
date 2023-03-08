@@ -37,7 +37,7 @@ export default {
   }
   .top-nav {
     width: 86%;
-    height: 70px;
+    height: 60px;
     position: fixed;
     top: 0;
     left: 200px;
@@ -51,7 +51,6 @@ export default {
     top: 90px;
     left: 220px;
     right: 40px;
-    // border: 2px solid black;
   }
 }
 </style>
