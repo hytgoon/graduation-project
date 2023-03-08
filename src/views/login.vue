@@ -40,7 +40,7 @@ export default {
   width: 100%;
   height: 100%;
   padding-top: 30px;
-  background: url("../assets/login/login-bg.png");
+  background: url("../assets/login/login.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
