@@ -7,7 +7,8 @@ const routes = [
   {
     path: '/layout',
     name: 'layout',
-    component: () => import('../views/layout')
+    component: () => import('../views/layout'),
+    children: []
   },
   {
     path: '/login',
