@@ -28,8 +28,9 @@ export default {
     }
   },
   methods: {
+    // ...mapMutations(['changeLogin']),
     login() {
-      this.$router.push('/layout')
+      this.$router.push('/')
     }
   }
 }

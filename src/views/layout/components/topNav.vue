@@ -1,5 +1,13 @@
 <template>
   <div class="top-nav">
+    <div class="top-menu" @click="changeOpen">
+      <i :class="isOpen ? 'el-icon-s-unfold' : 'el-icon-s-fold'"></i>
+      <!-- <el-breadcrumb separator="/">
+        <el-breadcrumb-item v-for="(item, index) in menuList" :key="index">
+          {{ item }}
+        </el-breadcrumb-item>
+      </el-breadcrumb> -->
+    </div>
     <div class="user">
       <el-dropdown trigger="click">
         <span style="cursor: pointer;">何友婷<i class="el-icon-arrow-down el-icon--right"></i></span>
@@ -13,11 +21,20 @@
 </template>
 
 <script>
+
 export default {
   name: 'topNav',
+  props: {
+    isOpen: {
+      default: false
+    }
+  },
   methods: {
     loginOut() {
       this.$router.push('/login')
+    },
+    changeOpen() {
+      this.$emit('changeOpen')
     }
   }
 }
@@ -25,10 +42,21 @@ export default {
 
 <style lang="scss" scoped>
 .top-nav {
+  position: relative;
+  .top-menu {
+    position: absolute;
+    left: 20px;
+    top: 17px;
+    font-size: 25px;
+  }
   .user {
-    position: fixed;
+    position: absolute;
     right: 20px;
     top: 20px;
   }
 }
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 </style>

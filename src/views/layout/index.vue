@@ -1,10 +1,10 @@
 <template>
   <div class="layout-index">
-    <div class="menu-left">
-      <menu-left />
+    <div :class="[{'close-menu': isOpen}, 'menu-left']">
+      <menu-left :isOpen="isOpen"/>
     </div>
     <div class="top-nav">
-      <top-nav />
+      <top-nav :isOpen="isOpen" @changeOpen="changeOpen"/>
     </div>
     <div class="view-show">
       <router-view />
@@ -14,12 +14,22 @@
 
 <script>
 import menuLeft from "./components/menuLeft"
-import topNav from "./components/topNav.vue"
+import topNav from "./components/topNav"
 
 export default {
   components: {
     menuLeft,
     topNav
+  },
+  data() {
+    return {
+      isOpen: false
+    }
+  },
+  methods: {
+    changeOpen() {
+      this.isOpen = !this.isOpen
+    }
   }
 }
 </script>
@@ -28,6 +38,7 @@ export default {
 .layout-index {
   width: 100%;
   height: 100%;
+  // display: flex;
   .menu-left {
     width: 200px;
     height: 100%;
@@ -48,9 +59,18 @@ export default {
     width: 83%;
     height: 87%;
     position: fixed;
-    top: 90px;
+    top: 80px;
     left: 220px;
     right: 40px;
+  }
+  .close-menu {
+    animation: move 0.1s forwards;
+  }
+
+  @keyframes move {
+    100% {
+      width: 80px;
+    }
   }
 }
 </style>
