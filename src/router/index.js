@@ -25,7 +25,7 @@ const routes = [
       {
         path: 'role',
         name: 'role',
-        component: () => import('../views/homeMap'),
+        component: () => import('../views/peopleNum'),
         meta: { title: '角色信息' },
       }
     ]
