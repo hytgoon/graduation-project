@@ -52,7 +52,8 @@ export default {
   }
   .view-show {
     flex: 1;
-    margin: 10px 10px;
+    margin-top: 10px;
+    
   }
   .close-menu {
     animation: move ease-in-out 0.3s forwards;

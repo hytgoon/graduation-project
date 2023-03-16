@@ -79,8 +79,8 @@ export default {
   height: 420px;
   background-color: rgba($color: #ffffff, $alpha: 0.8);
   border-radius: 15px;
-  margin-left: 950px;
-  margin-top: 90px;
+  margin-left: 70%;
+  margin-top: 6%;
   padding: 50px 30px;
 }
 .form-title {
