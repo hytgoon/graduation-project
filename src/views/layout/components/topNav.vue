@@ -2,11 +2,9 @@
   <div class="top-nav">
     <div class="top-menu" @click="changeOpen">
       <i :class="isOpen ? 'el-icon-s-unfold' : 'el-icon-s-fold'"></i>
-      <!-- <el-breadcrumb separator="/">
-        <el-breadcrumb-item v-for="(item, index) in menuList" :key="index">
-          {{ item }}
-        </el-breadcrumb-item>
-      </el-breadcrumb> -->
+    </div>
+    <div class="top-title">
+      <span>{{ title }}</span>
     </div>
     <div class="user">
       <el-dropdown trigger="click">
@@ -29,6 +27,18 @@ export default {
       default: false
     }
   },
+  watch: {
+    $route: {
+      handler(val) {
+        this.title = this.$route.meta.title
+      }
+    }
+  },
+  data() {
+    return {
+      title: this.$route.meta.title
+    }
+  },
   methods: {
     loginOut() {
       this.$router.push('/login')
@@ -48,6 +58,13 @@ export default {
     left: 20px;
     top: 17px;
     font-size: 25px;
+  }
+  .top-title {
+    position: absolute;
+    left: 80px;
+    top: 17px;
+    font-weight: 600;
+    font-size: 19px;
   }
   .user {
     position: absolute;
