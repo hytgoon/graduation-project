@@ -1,12 +1,11 @@
 <template>
   <div class="menu-index">
-    <!-- :router="true" -->
     <el-menu 
       background-color="#222f3e" 
       text-color="#fff" 
       active-text-color="#54a0ff"
       :unique-opened="true"
-      default-active="1"
+      :default-active="$route.path.substring(1)"
       :router="true"
       :collapse-transition="false"
       :collapse="isOpen">

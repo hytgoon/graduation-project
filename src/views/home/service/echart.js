@@ -1,8 +1,7 @@
 /* 柱形图配置 */
 export const pillar = {
   title: {
-    text: '感染区域',
-    left: 'center',
+    text: '',
     textStyle: {
       fontSize: 14
     }

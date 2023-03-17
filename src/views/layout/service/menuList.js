@@ -64,31 +64,31 @@ export const menuList = [
   {
     title: '智能调度',
     icon: 'el-icon-guide',
-    index: '5',
+    index: 'smart',
     children: []
   },
   {
     title: '交通信息管理',
     icon: 'el-icon-location',
-    index: '6',
+    index: 'traffic',
     children: []
   },
   {
     title: '统计报表',
     icon: 'el-icon-pie-chart',
-    index: '7',
+    index: 'statement',
     children: []
   },
   {
     title: '辅助信息',
     icon: 'el-icon-tickets',
-    index: '8',
+    index: 'assist',
     children: []
   },
   {
     title: '用户信息管理',
     icon: 'el-icon-s-custom',
-    index: '9',
+    index: 'user',
     children: []
   }
 ]

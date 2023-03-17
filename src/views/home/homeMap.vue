@@ -39,6 +39,7 @@ export default {
 
       const chartTwo = echarts.init(document.getElementById('two'))
       const optionsTwo = this.pillar
+      optionsTwo.title.text = '感染区域'
       chartTwo.setOption(optionsTwo)
 
       const chartThree = echarts.init(document.getElementById('three'))
@@ -63,15 +64,20 @@ export default {
 
 <style lang="scss" scoped>
 .home-map {
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   .home-chart {
     flex: 0.7;
+    display: flex;
+    flex-direction: column;
     &-item {
       width: 100%;
-      height: 290px;
+      flex: 1;
     }
     &-bottom {
+      width: 100%;
+      flex: 0.5;
       display: flex;
       flex-wrap: wrap;
       &-item {
@@ -83,9 +89,9 @@ export default {
   .home-center {
     flex: 1;
     width: 50%;
-    margin: 0 10px;
+    margin-right: 10px;
     .map {
-      height: 700px;
+      height: 100%;
     }
   }
 }

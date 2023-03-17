@@ -57,6 +57,36 @@ const routes = [
         name: 'goods',
         component: () => import('../views/resource/goods'),
         meta: { title: '管理防疫物资' },
+      },
+      {
+        path: 'smart',
+        name: 'smart',
+        component: () => import('../components/smart'),
+        meta: { title: '智能调度' },
+      },
+      {
+        path: 'traffic',
+        name: 'traffic',
+        component: () => import('../components/traffic'),
+        meta: { title: '交通信息管理' },
+      },
+      {
+        path: 'statement',
+        name: 'statement',
+        component: () => import('../components/statement'),
+        meta: { title: '统计报表' },
+      },
+      {
+        path: 'assist',
+        name: 'assist',
+        component: () => import('../components/assist'),
+        meta: { title: '辅助信息' },
+      },
+      {
+        path: 'user',
+        name: 'user',
+        component: () => import('../components/user'),
+        meta: { title: '用户信息管理' },
       }
     ]
   },

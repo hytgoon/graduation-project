@@ -47,13 +47,14 @@ export default {
   }
   .top-nav {
     width: 100%;
-    height: 60px;
-    box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.2);
-  }
-  .view-show {
-    flex: 1;
-    margin-top: 10px;
-    
+    display: flex;
+    flex-direction: column;
+    .view-show {
+      flex: 1;
+      width: 100%;
+      padding: 0 10px;
+      margin-top: 10px;
+    }
   }
   .close-menu {
     animation: move ease-in-out 0.3s forwards;

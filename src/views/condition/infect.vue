@@ -1,6 +1,8 @@
 <template>
-  <baidu-map class="map" center="重庆">
-  </baidu-map>
+  <div style="height: 100%">
+    <baidu-map class="map" center="重庆">
+    </baidu-map>
+  </div>
 </template>
 
 <script>
@@ -11,8 +13,7 @@ export default {
 
 <style lang="scss" scoped>
 .map {
-  width: 98%;
-  height: 700px;
-  margin-left: 1%;
+  width: 100%;
+  height: 100%;
 }
 </style>
