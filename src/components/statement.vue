@@ -3,19 +3,19 @@
     <div class="statement-top">
       <div class="statement-top-item" style="color: #F79F1F">
         <span>确诊</span>
-        <span style="font-size: 40px;">1190</span>
+        <span style="font-size: 35px; margin-left: 20px;">1190</span>
       </div>
       <div class="statement-top-item">
         <span style="color: #FFC312">疑似</span>
-        <div>190</div>
+        <span style="color: #FFC312; font-size: 40px; margin-left: 20px;">190</span>
       </div>
       <div class="statement-top-item">
         <span style="color: #EE5A24">死亡</span>
-        <div>30</div>
+        <span style="color: #EE5A24; font-size: 40px; margin-left: 20px;">30</span>
       </div>
       <div class="statement-top-item">
         <span style="color: #A3CB38">治愈</span>
-        <div>2190</div>
+        <span style="color: #A3CB38; font-size: 40px; margin-left: 20px;">2190</span>
       </div>
     </div>
     <div class="statement-center" id="one"></div>
@@ -58,7 +58,6 @@ export default {
       optionsWeek.title.text = '周增加'
       chartWeek.setOption(optionsWeek)
 
-
       const chartDay= echarts.init(document.getElementById('day'))
       const optionsDay = this.pillar
       optionsDay.title.text = '日增加'
@@ -81,11 +80,11 @@ export default {
       box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.1);
       border-color: rgba(0, 0, 0, 0.05);
       margin: 0 10px;
-      padding: 2px 0;
+      padding: 20px 0;
       font-weight: 600;
-      vertical-align: middle;
       span {
         font-size: 18px;
+        vertical-align: middle;
       }
     }
   }
