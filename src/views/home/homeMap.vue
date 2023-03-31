@@ -1,8 +1,7 @@
 <template>
   <div class="home-map">
     <div class="home-center">
-      <baidu-map class="map" center="重庆">
-      </baidu-map>
+      <div id="chart"></div>
     </div>
     <div class="home-chart">
       <div id="one" class="home-chart-item"></div>
@@ -30,6 +29,7 @@ export default {
   },
   mounted() {
     this.initCharts()
+    this.initMapChart()
   },
   methods: {
     initCharts() {
@@ -57,6 +57,64 @@ export default {
         { value: 735, name: '治愈' },
       ]
       chartFour.setOption(optionsFour)
+    },
+    initMapChart() {
+      const chart = echarts.init(document.getElementById('chart'))
+      const option = {
+        title: {
+          text: '感染人数分布'
+        },
+        tooltip: {
+          trigger: "item",
+        },
+        visualMap: {
+          min: 0,
+          max: 5000,
+          text: ['High', 'Low'],
+          realtime: false,
+          calculable: true,
+          inRange: {
+            color: ['lightskyblue', 'yellow', 'orangered']
+          }
+        },
+        series: [
+          {
+            name: "感染人数",
+            type: "map",
+            mapType: "重庆",
+            roam: false,
+            label: {
+              normal: {
+                show: true,
+              },
+              emphasis: {
+                show: true,
+              },
+            },
+            itemStyle: {
+              normal: {
+                borderWidth: 0.2 /* //区域边框宽度 */,
+                borderColor: "#009fe8" /* //区域边框颜色 */,
+                areaColor: "#ddd",
+              }
+            },
+            showLegendSymbol: true,
+            data: [
+              { name: "渝北区", value: 4139 },
+              { name: "巴南区", value: 1555 },
+              { name: "沙坪坝区", value: 3455 },
+              { name: "南岸区", value: 3444 },
+              { name: "江北区", value: 2555 },
+              { name: "北碚区", value: 2345 },
+              { name: "渝中区", value: 1103 },
+              { name: "九龙坡区", value: 5007 },
+              { name: "大渡口区", value: 1004 }
+            ],
+          },
+        ],
+      }
+      echarts.registerMap("重庆", require("../../assets/json/chongqing.json"))
+      chart.setOption(option)
     }
   }
 }
@@ -90,7 +148,7 @@ export default {
     flex: 1;
     width: 50%;
     margin-right: 10px;
-    .map {
+    #chart {
       height: 100%;
     }
   }

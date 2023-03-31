@@ -47,6 +47,7 @@ export default {
   }
   .top-nav {
     width: 100%;
+    min-height: 60px;
     display: flex;
     flex-direction: column;
     .view-show {
@@ -54,6 +55,7 @@ export default {
       width: 100%;
       padding: 0 10px;
       margin-top: 10px;
+      overflow-y: scroll;
     }
   }
   .close-menu {
