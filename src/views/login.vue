@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import {login} from '@/api/user/user'
+
 export default {
   name: 'login',
   data() {
@@ -53,7 +55,19 @@ export default {
   },
   methods: {
     login() {
-      this.$router.push('/')
+      // this.$router.push('/')
+      // await login(this.loginForm).then((res) => {
+      //   const token = res.data.token
+      //   this.$store.commit('changeLogin', token)
+      //   this.$router.push('/')
+      //   this.$notify({
+      //     title: '成功',
+      //     message: '登陆成功',
+      //     type: 'success'
+      //   });
+      // })
+      // console.log(login)
+      login()
     }
   }
 }

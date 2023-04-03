@@ -1,15 +1,17 @@
 import axios from "axios";
+import {Message, Notification} from 'element-ui'
 
-axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+axios.defaults.baseURL = '/api'
 
-const service = axios.create({
-  baseURL: '',
+const request = axios.create({
+  // baseURL: '/api',
   timeout: 30000,
   withCredentials: false
 })
 
 // 请求拦截器
-service.interceptors.request.use( config => {
+request.interceptors.request.use( config => {
   if (localStorage.getItem('Authorization')) {
     config.headers.token = localStorage.getItem('Authorization');
   }
@@ -17,6 +19,18 @@ service.interceptors.request.use( config => {
 }, error => Promise.reject(error))
 
 // 响应拦截器
-service.interceptors.response.use( async res => {}, error => {})
+request.interceptors.response.use( async res => {
+  const code = res.data.code || 200 // 若未设置状态码默认成功
+  const msg = res.data.msg
+  if(code === 400) {
+    Message({
+      message: msg,
+      type: 'error'
+    })
+    return Promise.reject(new Error(msg))
+  } else {
+    return res.data
+  }
+}, error => {})
 
-export default service
+export default request
