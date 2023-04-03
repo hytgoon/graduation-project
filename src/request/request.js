@@ -2,10 +2,10 @@ import axios from "axios";
 import {Message, Notification} from 'element-ui'
 
 axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.baseURL = '/api'
+// axios.defaults.baseURL = '/api'
 
 const request = axios.create({
-  // baseURL: '/api',
+  baseURL: 'http://10.203.23.69:8090',
   timeout: 30000,
   withCredentials: false
 })

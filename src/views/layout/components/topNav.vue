@@ -72,6 +72,7 @@ export default {
   methods: {
     loginOut() {
       this.$router.push('/login')
+      localStorage.removeItem('Authorization')
     },
     changeOpen() {
       this.$emit('changeOpen')
