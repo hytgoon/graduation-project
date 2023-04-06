@@ -10,9 +10,9 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
-    changeLogin (state, user) {
-      state.Authorization = user.Authorization;
-      localStorage.setItem('Authorization', user.Authorization);
+    changeLogin (state, token) {
+      state.Authorization = token
+      localStorage.setItem('Authorization', token)
     }
   },
   actions: {

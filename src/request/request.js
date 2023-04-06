@@ -31,6 +31,8 @@ request.interceptors.response.use( async res => {
   } else {
     return res.data
   }
-}, error => {})
+}, error => {
+  Message.error(error)
+})
 
 export default request
