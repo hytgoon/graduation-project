@@ -89,8 +89,7 @@ export default {
         this.$notify({
           title: '修改成功',
           message: '修改个人信息成功',
-          type: 'success',
-          duration: 0
+          type: 'success'
         });
       }
     }

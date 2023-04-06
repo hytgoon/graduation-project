@@ -5,7 +5,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.baseURL = '/api'
 
 const request = axios.create({
-  // baseURL: '/api',
+//   baseURL: '/api',
   timeout: 30000,
   withCredentials: false
 })

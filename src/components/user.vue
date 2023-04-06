@@ -42,7 +42,7 @@
         </el-table-column>
         <el-table-column label="操作" width="150px" :align="'center'">
           <template slot-scope="scope">
-            <el-button type="text" size="small" @click="editUser(scope.row.userId)">编辑</el-button>
+            <el-button type="text" size="small" @click="editUser(scope.row)">编辑</el-button>
             <el-popconfirm title="确定删除该用户信息" @confirm="delUser(scope.row.userId)">
               <el-button style="margin-left: 8px;" slot="reference" type="text" size="small">删除</el-button>
             </el-popconfirm>
@@ -64,9 +64,15 @@
     <!-- 添加和编辑用户信息 -->
     <el-dialog :title="title" :visible.sync="showPop" width="500px" append-to-body>
       <el-form :model="userInfo" label-width="80px" :rules="rules">
+            <el-form-item label="用户账户" prop="loginName" >
+              <el-input v-model="userInfo.loginName" placeholder="请输入用户账户" :disabled="title !== '添加用户'"></el-input>
+            </el-form-item>
         <el-form-item label="用户名称" prop="userName">
           <el-input v-model="userInfo.userName" placeholder="请输入用户名称"></el-input>
         </el-form-item>
+            <el-form-item label="密码" prop="loginPwd" v-if="title === '添加用户'">
+              <el-input v-model="userInfo.userPassord" placeholder="请输入用户密码"></el-input>
+            </el-form-item>
         <el-form-item label="用户性别" prop="userSex">
           <el-select v-model="userInfo.userSex" placeholder="请选择用户性别" style="width: 380px">
             <el-option :value="0" label="男"></el-option>
@@ -93,6 +99,8 @@
 </template>
 
 <script>
+import { getUserList, addUser, delUser, editUser } from '@/api/user/user'
+
 export default {
   name: 'user',
   data() {
@@ -106,28 +114,39 @@ export default {
         userName: '',
         userAccount: ''
       },
-      userInfo: {
-        userName: '',
+        userInfo: {
+            loginName: '',
+            userName: '',
+        loginPwd: '',
         userSex: 0,
         userEmail: '',
         userPhone: '',
         userAddress: ''
       },
-      rules: {
+        rules: {
+        loginName: [
+                    { required: true, message: "用户名称不能为空", trigger: "blur" }
+                ],
         userName: [
           {required: true, message: "用户名称不能为空", trigger: "blur"}
-        ]
+        ],
+                loginPwd: [
+                    { required: true, message: "用户名称不能为空", trigger: "blur" }
+                ]
       },
       tableData: []
     }
   },
   mounted() {
-    this.total = this.tableData.length
+      this.getList()
   },
   methods: {
     /** 获取用户信息列表 */
     getList() {
-      
+      getUserList(this.userForm.page, this.userForm.pageSize).then((res) => {
+                this.tableData = res.data
+                this.total = this.tableData.length
+            })
     },
 
     /** 展示新增新用户弹窗 */
@@ -140,26 +159,57 @@ export default {
     editUser(row) {
       this.title = '编辑用户信息'
       this.showPop = true
-      this.userInfo.userName = row.name
-      this.userInfo.userType = row.account
+    // console.log(row)
+    this.userInfo = row
     },
 
     /** 删除用户信息 */
     delUser(id) {
-
+        delUser(id).then( _ => {
+            this.$notify({
+                title: '修改成功',
+                message: '修改个人信息成功',
+                type: 'success'
+            });
+            this.getList()
+        })
     },
 
     /** 提交新增或编辑表单 */
     submitForm() {
-      this.showPop = false
+        this.showPop = false
+        if (this.title === '添加用户') {
+            addUser(this.userInfo).then(_ => {
+                this.$notify({
+                        title: '添加成功',
+                        message: '添加用户信息成功',
+                        type: 'success'
+                    });
+                    this.getList()
+            })
+        } else {
+            editUser(this.userInfo).then(_ => {
+                this.$notify({
+                        title: '修改成功',
+                        message: '修改用户信息成功',
+                        type: 'success'
+                    });
+                    this.getList()
+            })
+      }
     },
 
     /** 取消新增或编辑用户信息 */
     cancel() {
       this.showPop = false,
       this.userInfo = {
-        userName: '',
-        userType: ''
+        loginName: '',
+                    userName: '',
+                    loginPwd: '',
+        userSex: 0,
+        userEmail: '',
+        userPhone: '',
+        userAddress: ''
       }
     },
   }

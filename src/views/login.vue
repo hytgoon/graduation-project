@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { login, register} from '@/api/user/user'
+import { login, register} from '@/api/login'
 
 export default {
   name: 'login',

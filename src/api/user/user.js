@@ -3,7 +3,7 @@ import request from '@/request/request'
 /** 查询所有用户信息 */
 export function getUserList(page,pageSize) {
   return request({
-    url: '/user/findAll?page=' + page + '&pageSzie=' +  pageSize,
+    url: '/user/findAll?page=' + page + '&pageSize=' +  pageSize,
     method: 'get'
   })
 }
